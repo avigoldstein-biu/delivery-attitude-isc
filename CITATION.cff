@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: >-
+  If you use this code, please cite the paper it accompanies (below). If you need to refer to a
+  specific version of the code itself, cite the archived release and its DOI.
+title: >-
+  Analysis code for "Delivery and Attitude Modulate Shared Neural Processing of Speech Through
+  Distinct Frequency Channels"
+abstract: >-
+  Frequency-resolved inter-subject correlation of magnetoencephalography during naturalistic
+  speech: source reconstruction, leave-one-out ISC by frequency band, low-level acoustic and
+  visual feature control, separation of periodic from aperiodic activity, region-of-interest
+  enrichment and against-zero tests, and the figures reported in the paper.
+type: software
+license: MIT
+authors:
+  - family-names: Atia
+    given-names: Barak
+    affiliation: >-
+      Department of Psychology and Gonda Brain Research Center, Bar-Ilan University, Israel
+  - family-names: Goldstein
+    given-names: Abraham
+    affiliation: >-
+      Department of Psychology and Gonda Brain Research Center, Bar-Ilan University, Israel
+keywords:
+  - magnetoencephalography
+  - inter-subject correlation
+  - naturalistic speech
+  - neural oscillations
+# repository-code: https://github.com/<owner>/<repo>        # fill in once the repository exists
+# doi: 10.5281/zenodo.<id>                                  # fill in from the archived release
+preferred-citation:
+  type: article
+  title: >-
+    Delivery and Attitude Modulate Shared Neural Processing of Speech Through Distinct Frequency
+    Channels
+  authors:
+    - family-names: Atia
+      given-names: Barak
+    - family-names: Berson
+      given-names: Yair
+    - family-names: Goldstein
+      given-names: Abraham
+  journal: Psychophysiology
+  year: 2026
+  # volume:                                                 # fill in on publication
+  # doi:

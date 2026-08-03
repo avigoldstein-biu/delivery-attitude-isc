@@ -9,7 +9,18 @@ for a = [1:20 23:36 43:70 81:90]; tissue(atlas.tissue==a) = n; n = n+1; end
 
 S = load('G:/Barak1/reanalysis/render_stats.mat');
 panels = {'s1_beta_raw','s1_beta_res','s1_beta_core','s2_alpha','s2_theta'};
-cmap = jet(256); CLIM = [0 0.09]; grey = [0.86 0.83 0.73];
+% Grey-to-red sequential ramp, the same one render_convergence.m uses, so that Figures 3, 4 and 6
+% share a single colour scale for a single quantity. Lightness falls monotonically with effect
+% size, which matches the one-sided tests; jet is neither monotonic in lightness nor
+% colourblind-safe, and it invents apparent boundaries where the data are smooth.
+cpts = [0.78 0.78 0.78; 0.93 0.45 0.32; 0.55 0.00 0.00];
+tt = [0; 0.5; 1]; tq = linspace(0,1,256)';
+cmap = [interp1(tt,cpts(:,1),tq) interp1(tt,cpts(:,2),tq) interp1(tt,cpts(:,3),tq)];
+CLIM = [0 0.09];
+% Cortex that does not survive the mask. Kept warm rather than neutral grey: these panels paint
+% only the surviving regions, so unpainted cortex covers most of the surface and has to stay
+% clearly distinct from the pale end of the ramp.
+grey = [0.86 0.83 0.73];
 outdir = 'G:/Barak1/reanalysis/renders/'; if ~exist(outdir,'dir'); mkdir(outdir); end
 hemis = {'left','right'}; azlat = [-90 90]; azmed = [90 -90];
 

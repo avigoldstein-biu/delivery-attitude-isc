@@ -3,11 +3,15 @@ import os
 import numpy as np
 from PIL import Image
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-from matplotlib.cm import ScalarMappable; from matplotlib.colors import Normalize
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import Normalize, LinearSegmentedColormap
 ROOT = r"G:/Barak1"
 DERIV = os.path.join(ROOT, "reanalysis")   # reconstruction outputs and intermediate results; point anywhere
 R = os.path.join(DERIV, "renders/")
 CLIM = (0, 0.09)
+# control points shared with matlab/render_patch.m and fig_convergence.py
+GREY_RED = LinearSegmentedColormap.from_list(
+    "grey_red", [(0.78, 0.78, 0.78), (0.93, 0.45, 0.32), (0.55, 0.00, 0.00)])
 
 def autocrop(path, pad=6):
     im = Image.open(path).convert("RGB"); a = np.asarray(im)
@@ -31,7 +35,9 @@ def montage(panels, rowlabels, title, out):
         axes[ri][0].text(-0.08, 0.5, rowlabels[ri], transform=axes[ri][0].transAxes,
                          rotation=90, va="center", ha="center", fontsize=12, fontweight="bold")
     fig.suptitle(title, fontsize=13, y=0.99)
-    sm = ScalarMappable(norm=Normalize(*CLIM), cmap="jet")
+    # Same grey-to-red ramp as matlab/render_patch.m and fig_convergence.py: the colourbar has to
+    # match the surfaces it labels, and one quantity should have one scale across the figure set.
+    sm = ScalarMappable(norm=Normalize(*CLIM), cmap=GREY_RED)
     cax = fig.add_axes([0.25, 0.045, 0.5, 0.02])
     cb = fig.colorbar(sm, cax=cax, orientation="horizontal")
     cb.set_label("ISC difference (Fisher-z)", fontsize=10)

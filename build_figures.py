@@ -1,7 +1,6 @@
 """
 Assemble the numbered figure set for submission.
 
-    Figure 1  experimental designs (drawn here)
     Figure 2  (A) power spectrum + specparam        (B) global ISC, Study 1
     Figure 3  Study 1 beta ISC, raw and surviving core
     Figure 4  (A) Study 2 attitude alpha/theta maps (B) global ISC, Study 2
@@ -11,6 +10,11 @@ Assemble the numbered figure set for submission.
 Figures 2 and 4 are two panels each, produced by separate scripts and composited here; 3, 5 and 6
 are single images that only need re-stamping at print resolution. Panel letters are drawn into a
 left gutter rather than into the panels themselves, so no panel is cropped or overwritten.
+
+Figure 1 is not built here. It is a schematic of the two designs, drawn by hand as SVG rather than
+generated from data, and it is submitted as `figures_final/Figure1.svg` converted to PDF. Nothing
+in this repository reproduces it, and it is left out rather than regenerated so that running this
+script cannot overwrite the version that goes to the journal.
 
 Wiley asks for at least 300 dpi, a width between 80 and 180 mm, under 10 MB, and files named by
 figure number alone. Anything wider than 180 mm at 300 dpi is downsampled to fit; the printed size
@@ -24,15 +28,11 @@ Run the panel scripts first:
     fig_trait_synchrony.py                                          -> Figure 5
     fig_convergence_export.py -> matlab/render_convergence.m -> fig_convergence.py -> Figure 6
 
-Requires Pillow in addition to matplotlib.
+Requires Pillow.
 
 Usage: python build_figures.py
 """
 import os, sys
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch
 from PIL import Image, ImageDraw, ImageFont
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -43,59 +43,6 @@ OUT = os.path.join(DERIV, "figures_final")
 os.makedirs(OUT, exist_ok=True)
 DPI = 300
 MAXW = int(180 / 25.4 * DPI)               # 180 mm at 300 dpi, the Wiley maximum
-
-
-# ---------------------------------------------------------------- Figure 1: the designs
-def figure1():
-    fig, axes = plt.subplots(2, 1, figsize=(6.0, 4.2))
-    C_CH, C_NC, C_SI = "#c0392b", "#2980b9", "#7f8c8d"
-    C_POS, C_NEG, C_CUE, C_NOCUE = "#c0392b", "#2980b9", "#16a085", "#95a5a6"
-
-    def box(ax, x, w, y, h, fc, label, sub=None):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.008,rounding_size=0.02",
-                                    fc=fc, ec="none", alpha=.85))
-        ax.text(x + w/2, y + h/2 + (.055 if sub else 0), label, ha="center", va="center",
-                fontsize=8, color="w", fontweight="bold")
-        if sub:
-            ax.text(x + w/2, y + h/2 - .085, sub, ha="center", va="center", fontsize=6.5, color="w")
-
-    ax = axes[0]
-    ax.set_title("Study 1  -  Speaker delivery (within-subjects, N = 40)",
-                 fontsize=8.5, fontweight="bold", loc="left", pad=5)
-    box(ax, .02, .29, .52, .34, C_CH, "Charismatic", "same speech, same speaker")
-    box(ax, .345, .29, .52, .34, C_NC, "Non-charismatic", "same speech, same speaker")
-    box(ax, .67, .29, .52, .34, C_SI, "Silent video", "control")
-    ax.annotate("", xy=(.97, .42), xytext=(.02, .42),
-                arrowprops=dict(arrowstyle="-|>", color="0.35", lw=1.0))
-    ax.text(.5, .21, "counterbalanced order  |  MEG throughout", ha="center", fontsize=6.5, color="0.3")
-    ax.text(.5, .04, "contrast: charismatic vs non-charismatic ISC", ha="center", fontsize=7,
-            style="italic", color="0.15")
-
-    ax = axes[1]
-    ax.set_title("Study 2  -  Listener attitude x social context (one cohort, two crossed manipulations)",
-                 fontsize=8.5, fontweight="bold", loc="left", pad=5)
-    ax.text(.235, .80, "Manipulation 1: ATTITUDE  (n = 58)", ha="center", fontsize=7,
-            fontweight="bold", color="0.2")
-    box(ax, .015, .20, .38, .30, C_POS, "Positive", "n = 29")
-    box(ax, .255, .20, .38, .30, C_NEG, "Negative", "n = 29")
-    ax.text(.235, .29, "identical lecture, differing prior description", ha="center",
-            fontsize=6.2, color="0.35")
-    ax.text(.765, .80, "Manipulation 2: AUDIENCE CUE  (n = 61)", ha="center", fontsize=7,
-            fontweight="bold", color="0.2")
-    box(ax, .545, .20, .38, .30, C_CUE, "Cue present", "n = 28")
-    box(ax, .785, .20, .38, .30, C_NOCUE, "No cue", "n = 33")
-    ax.text(.765, .29, "second, different lecture; silhouetted audience", ha="center",
-            fontsize=6.2, color="0.35")
-    ax.plot([.50, .50], [.15, .88], color="0.75", lw=.8, ls="--")
-    ax.text(.5, .04, "65 recruited; both tasks in one session, counterbalanced (overlap n = 58)",
-            ha="center", fontsize=7, style="italic", color="0.15")
-
-    for ax in axes:
-        ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
-    fig.tight_layout(h_pad=1.6)
-    p = os.path.join(OUT, "Figure1.png")
-    fig.savefig(p, dpi=DPI, facecolor="w"); plt.close(fig)
-    return p
 
 
 # ---------------------------------------------------------------- compositing
@@ -145,7 +92,7 @@ def relabel(path, out):
 if __name__ == "__main__":
     S = lambda n: os.path.join(DERIV, n)
     O = lambda n: os.path.join(OUT, n)
-    made = [figure1()]
+    made = []
     made.append(stack([S("fig_power_spectrum.png"), S("fig_global_isc.png")], O("Figure2.png")))
     # fig_brain_study1_beta.png, not the older fig_brain_study1_raw_vs_core.png: the current
     # version masks the lower panel by the surviving-stage significance rather than the raw

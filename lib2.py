@@ -11,7 +11,7 @@ import os, glob, numpy as np, pandas as pd, scipy.io as sio
 from scipy import stats
 
 # ---------------------------------------------------------------- CONFIG (edit paths)
-SRC   = r"G:/Barak1/iscex/source_iscex"                 # per-subject ISCex_<n>.mat (fields S2_band, S3_band: 72 x T x 5)
+SRC   = r"G:/Barak1/iscex/source_iscex_deposit"         # per-subject ISCex_<n>.mat (fields S2_band, S3_band: 72 x T x 5)
 ATLAS = r"G:/Barak1/iscex/ISCex_1/atlas_info.mat"       # AAL tissue map -> 72 region labels
 META  = r"G:/Barak1/iscex/trial_metadata.csv"           # subj, include_S2/S3, attitude_grp, cue_grp
 RNG   = np.random.RandomState(0)

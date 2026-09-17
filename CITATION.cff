@@ -26,8 +26,12 @@ keywords:
   - inter-subject correlation
   - naturalistic speech
   - neural oscillations
-# repository-code: https://github.com/<owner>/<repo>        # fill in once the repository exists
-# doi: 10.5281/zenodo.<id>                                  # fill in from the archived release
+repository-code: https://github.com/avigoldstein-biu/delivery-attitude-isc
+# doi:                                                     # the Zenodo concept DOI, added once the first release is archived
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22808367
+    description: The data deposit this code analyses
 preferred-citation:
   type: article
   title: >-
@@ -42,5 +46,5 @@ preferred-citation:
       given-names: Abraham
   journal: Psychophysiology
   year: 2026
-  # volume:                                                 # fill in on publication
-  # doi:
+  # doi:                                                   # the article DOI, added when the journal assigns it
+  # volume:                                                 # fill in when the issue is assigned

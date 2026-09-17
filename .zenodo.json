@@ -1,0 +1,34 @@
+{
+  "upload_type": "software",
+  "title": "Analysis code for: Delivery and Attitude Modulate Shared Neural Processing of Speech Through Distinct Frequency Channels",
+  "creators": [
+    {
+      "name": "Atia, Barak",
+      "affiliation": "Department of Psychology and Gonda Brain Research Center, Bar-Ilan University, Israel"
+    },
+    {
+      "name": "Goldstein, Abraham",
+      "affiliation": "Department of Psychology and Gonda Brain Research Center, Bar-Ilan University, Israel"
+    }
+  ],
+  "description": "<p>Analysis code accompanying Atia, Berson &amp; Goldstein, <em>Delivery and Attitude Modulate Shared Neural Processing of Speech Through Distinct Frequency Channels</em> (<em>Psychophysiology</em>).</p>\n\n<p>Frequency-resolved inter-subject correlation of magnetoencephalography during naturalistic speech: source reconstruction (MATLAB/FieldTrip), leave-one-out ISC by frequency band, low-level acoustic and visual feature control, separation of periodic from aperiodic activity, region-of-interest enrichment and against-zero tests, cross-study convergence, and the figures reported in the paper.</p>\n\n<p>The data this code reads are deposited separately; see the related identifiers. Set <code>ROOT</code> in the scripts to the extracted data directory and every path resolves. The README gives the order the scripts run in.</p>\n\n<p>MEG cleaning is upstream of this repository and is not included: it was done with cleanMEG_BIU (https://github.com/yuval-harpaz/cleanMEG_BIU), separately distributed under GPL v2.</p>",
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "magnetoencephalography",
+    "MEG",
+    "inter-subject correlation",
+    "naturalistic speech",
+    "neural oscillations",
+    "source reconstruction"
+  ],
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.22808367",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset",
+      "scheme": "doi"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ import imageio_ffmpeg
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.stderr.reconfigure(encoding="utf-8", errors="replace")
-ROOT = r"G:/Barak1"; ASR = os.path.join(ROOT, "paper_code", "asr"); os.makedirs(ASR, exist_ok=True)
+ROOT = r"G:/Barak1"; ASR = os.path.join(ROOT, "reanalysis", "asr"); os.makedirs(ASR, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 CLIP = {"Charismatic": "Charismatic.MPG", "Non_Charismatic": "Non-Charismatic.MPG"}
 SR = 16000

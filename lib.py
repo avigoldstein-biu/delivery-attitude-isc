@@ -9,8 +9,8 @@ import imageio_ffmpeg
 
 # ---------------------------------------------------------------- CONFIG (edit paths)
 CLIP_DIR   = r"G:/Barak1"                                   # folder with the .MPG clips
-SOURCE_DIR = r"G:/Barak1/paper_code/source"                # objective-ICA region time courses (from ft_ica_full3.m)
-BB_DIR     = r"G:/Barak1/paper_code/source_bb"             # broadband region time courses
+SOURCE_DIR = r"G:/Barak1/reanalysis/source_myica3"         # objective-ICA region time courses (from ft_ica_full3.m)
+BB_DIR     = r"G:/Barak1/reanalysis/source_bb_ica"         # broadband region time courses
 ATLAS_INFO = r"G:/Barak1/Charisma/atlas_info.mat"          # AAL tissue map (1169 grid -> 72 regions)
 FFMPEG     = imageio_ffmpeg.get_ffmpeg_exe()
 

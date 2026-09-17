@@ -1,5 +1,7 @@
 # Analysis code
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22808428.svg)](https://doi.org/10.5281/zenodo.22808428)
+
 Code to reproduce the analyses reported in *Delivery and Attitude Modulate Shared Neural Processing of Speech Through Distinct Frequency Channels* (Atia, Berson &
 Goldstein).
 
@@ -184,6 +186,10 @@ require citation.
 If you use this code, please cite the paper. `CITATION.cff` carries the details, and GitHub and
 Zenodo both read it, so the "Cite this repository" button and the archived release produce a
 correct reference without anyone transcribing it.
+
+This code is archived at https://doi.org/10.5281/zenodo.22808428, which always resolves to the
+most recent version; each release also has its own DOI if you need to pin one. The data it
+reads are deposited separately at https://doi.org/10.5281/zenodo.22808367.
 
 MEG cleaning is not covered by this licence: it is done by cleanMEG_BIU, which is separately
 distributed under GPL v2 (see **MEG cleaning** above). No code from it is included here.

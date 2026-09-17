@@ -27,7 +27,7 @@ keywords:
   - naturalistic speech
   - neural oscillations
 repository-code: https://github.com/avigoldstein-biu/delivery-attitude-isc
-# doi:                                                     # the Zenodo concept DOI, added once the first release is archived
+doi: 10.5281/zenodo.22808428
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22808367
